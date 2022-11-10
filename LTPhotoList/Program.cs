@@ -25,12 +25,6 @@ namespace LTPhotoList
                         string myResponse = myWebClient.GetStringAsync(strURL).Result;
                         if (string.IsNullOrEmpty(myResponse) == false) 
                         {
-                            /*You may ask yourself, "Self, why isn't he using the Microsoft System.Text.Json library?"
-                              The answer is quite simple.  The Microsoft System.Text.Json library cannot parse JSON
-                              except for the SIMPLEST structures.  You give it an unnamed array like the expected
-                              return from this example, and it cannot convert it to a .NET type.  God forbid you want
-                              to MODIFY any sort of JSON using an object model (like building a JSON object for a
-                              request body maybe?).  So- if you use JSON in a .NET environment, then use Newtonsoft. */
                             JArray jaImages = JsonConvert.DeserializeObject<JArray>(myResponse);
                             if (jaImages != null && jaImages.Count > 0) 
                             {
